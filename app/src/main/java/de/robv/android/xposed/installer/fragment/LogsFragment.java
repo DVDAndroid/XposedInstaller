@@ -171,38 +171,8 @@ public class LogsFragment extends Fragment {
 				getResources().getString(R.string.menuSend)));
 	}
 
-	@Override
-	public void onRequestPermissionsResult(int requestCode,
-			@NonNull String[] permissions, @NonNull int[] grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions,
-				grantResults);
-		if (requestCode == WRITE_EXTERNAL_PERMISSION) {
-			if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-				if (mClickedMenuItem != null) {
-					new Handler().postDelayed(new Runnable() {
-						@Override
-						public void run() {
-							onOptionsItemSelected(mClickedMenuItem);
-						}
-					}, 500);
-				}
-			} else {
-				Toast.makeText(getActivity(), R.string.permissionNotGranted,
-						Toast.LENGTH_LONG).show();
-			}
-		}
-	}
-
 	@SuppressLint("DefaultLocale")
 	private File save() {
-		if (ActivityCompat.checkSelfPermission(getActivity(),
-				Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-			requestPermissions(
-					new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-					WRITE_EXTERNAL_PERMISSION);
-			return null;
-		}
-
 		if (!Environment.getExternalStorageState()
 				.equals(Environment.MEDIA_MOUNTED)) {
 			Toast.makeText(getActivity(), R.string.sdcard_not_writable,
@@ -216,8 +186,7 @@ public class LogsFragment extends Fragment {
 				now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1,
 				now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.HOUR_OF_DAY),
 				now.get(Calendar.MINUTE), now.get(Calendar.SECOND));
-		File targetFile = new File(getActivity().getExternalFilesDir(null),
-				filename);
+		File targetFile = new File(getActivity().getExternalCacheDir(),filename);
 
 		try {
 			FileInputStream in = new FileInputStream(mFileErrorLog);
