@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.download;
 
 import static de.robv.android.xposed.installer.XposedApp.darkenColor;
 
@@ -25,6 +25,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import de.robv.android.xposed.installer.R;
+import de.robv.android.xposed.installer.XposedApp;
+import de.robv.android.xposed.installer.XposedBaseActivity;
+import de.robv.android.xposed.installer.fragment.ModulesFragment;
 import de.robv.android.xposed.installer.repo.Module;
 import de.robv.android.xposed.installer.util.ModuleUtil;
 import de.robv.android.xposed.installer.util.ModuleUtil.InstalledModule;

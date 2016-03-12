@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.fragment;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -56,10 +56,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import de.robv.android.xposed.installer.R;
+import de.robv.android.xposed.installer.XposedApp;
 import de.robv.android.xposed.installer.util.AssetUtil;
 import de.robv.android.xposed.installer.util.DownloadsUtil;
 import de.robv.android.xposed.installer.util.NavUtil;
-import de.robv.android.xposed.installer.util.NotificationUtil;
 import de.robv.android.xposed.installer.util.RootUtil;
 import de.robv.android.xposed.installer.util.ThemeUtil;
 import de.robv.android.xposed.installer.util.XposedZip;
@@ -374,11 +375,6 @@ public class InstallerFragment extends Fragment
 						.content(R.string.helpChoose)
 						.positiveText(android.R.string.ok).show();
 				break;
-			case R.id.installation_mode:
-				Intent intent = new Intent(getActivity(),
-						SettingsActivity.class);
-				startActivity(intent);
-				break;
 			case R.id.reboot:
 				areYouSure(R.string.reboot,
 						new MaterialDialog.ButtonCallback() {
@@ -496,7 +492,6 @@ public class InstallerFragment extends Fragment
 	@Override
 	public void onResume() {
 		super.onResume();
-		NotificationUtil.cancel(NotificationUtil.NOTIFICATION_MODULES_UPDATED);
 		mHadSegmentationFault = false;
 		refreshKnownIssue();
 	}
@@ -956,7 +951,7 @@ public class InstallerFragment extends Fragment
 					String version = jsonObject.getString("version");
 					int sdk = jsonObject.getInt("sdk");
 
-					installers.add(new XposedZip.Installer(link, name,
+					installers.add(new Installer(link, name,
 							architecture, sdk, version));
 				}
 

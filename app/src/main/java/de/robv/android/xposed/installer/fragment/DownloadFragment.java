@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -31,6 +31,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.text.DateFormat;
 import java.util.Date;
 
+import de.robv.android.xposed.installer.download.DownloadDetailsActivity;
+import de.robv.android.xposed.installer.R;
+import de.robv.android.xposed.installer.XposedApp;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -90,7 +93,9 @@ public class DownloadFragment extends Fragment implements RepoListener,
 	@Override
 	public void onResume() {
 		super.onResume();
+		mListView.setAdapter(mAdapter);
 
+		mListView.setFastScrollEnabled(true);
 		mIgnoredUpdatesPref.registerOnSharedPreferenceChangeListener(this);
 		if (changed) {
 			reloadItems();
@@ -234,7 +239,7 @@ public class DownloadFragment extends Fragment implements RepoListener,
 										mSortingOrder = i;
 										mPref.edit()
 												.putInt("download_sorting_order",
-                                                        mSortingOrder)
+														mSortingOrder)
 												.apply();
 										reloadItems();
 										materialDialog.dismiss();
@@ -242,9 +247,14 @@ public class DownloadFragment extends Fragment implements RepoListener,
 									}
 								})
 						.show();
-				return true;
+				break;
+			case R.id.menu_refresh:
+				mRepoLoader.triggerReload(true);
+				break;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
+		return true;
 	}
 
 	@Override

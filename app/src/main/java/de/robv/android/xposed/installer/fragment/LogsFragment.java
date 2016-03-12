@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.fragment;
 
 import static de.robv.android.xposed.installer.XposedApp.WRITE_EXTERNAL_PERMISSION;
 
@@ -34,6 +34,9 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
+
+import de.robv.android.xposed.installer.R;
+import de.robv.android.xposed.installer.XposedApp;
 
 public class LogsFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.download;
 
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
