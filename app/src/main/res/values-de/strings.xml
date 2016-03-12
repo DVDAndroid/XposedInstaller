@@ -32,8 +32,9 @@
     <string name="latestVersion">Mitgeliefert</string>
     <string name="versions">Versionen:</string>
     <string name="install_header_reboot">Neustart</string>
-    <string name="soft_reboot">Software-Neustart</string>
-    <string name="reboot">Geräte-Neustart</string>
+    <string name="soft_reboot">Warmstart</string>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot">Kaltstart</string>
     <string name="areyousure">Bist du sicher?</string>
     <string name="phone_not_compatible">Xposed ist (noch) nicht mit der Android-SDK-Version %1$d oder deiner Prozessor-Architektur (%2$s) kompatibel.</string>
     <string name="not_tested_but_compatible">Xposed wurde noch nicht mit der Android-SDK-Version %d getestet, aber es scheint kompatibel damit zu sein. Wenn du abenteuerlustig bist, kannst die Installation versuchen.</string>

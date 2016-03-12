@@ -2,11 +2,11 @@ package de.robv.android.xposed.installer;
 
 import static de.robv.android.xposed.installer.XposedApp.darkenColor;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.ColorInt;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
+
+import de.robv.android.xposed.installer.download.DownloadDetailsFragment;
+import de.robv.android.xposed.installer.fragment.AboutFragment;
+import de.robv.android.xposed.installer.fragment.DownloadFragment;
+import de.robv.android.xposed.installer.fragment.InstallerFragment;
+import de.robv.android.xposed.installer.fragment.LogsFragment;
+import de.robv.android.xposed.installer.fragment.ModulesFragment;
+import de.robv.android.xposed.installer.fragment.SettingsFragment;
+import de.robv.android.xposed.installer.fragment.SupportFragment;
 import de.robv.android.xposed.installer.util.ModuleUtil;
 import de.robv.android.xposed.installer.util.ModuleUtil.InstalledModule;
 import de.robv.android.xposed.installer.util.ModuleUtil.ModuleListener;
@@ -27,6 +39,7 @@ import de.robv.android.xposed.installer.util.ThemeUtil;
 
 public class WelcomeActivity extends XposedBaseActivity
 		implements NavigationView.OnNavigationItemSelectedListener,
+        ColorChooserDialog.ColorCallback,
 		ModuleListener, RepoListener {
 
 	private static final String SELECTED_ITEM_ID = "SELECTED_ITEM_ID";
@@ -68,12 +81,12 @@ public class WelcomeActivity extends XposedBaseActivity
 		if (savedInstanceState == null) {
 			mDrawerHandler.removeCallbacksAndMessages(null);
 			mDrawerHandler.postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					navigate(mSelectedId);
-				}
-			}, 250);
-			mDrawerLayout.closeDrawers();
+                @Override
+                public void run() {
+                    navigate(mSelectedId);  // open framework/configured fragment
+                }
+            }, 250);
+			mDrawerLayout.openDrawer(GravityCompat.START);
 		}
 
 		Bundle extras = getIntent().getExtras();
@@ -104,52 +117,46 @@ public class WelcomeActivity extends XposedBaseActivity
 		mNavigationView.getMenu().findItem(mSelectedId).setChecked(true);
 		mDrawerHandler.removeCallbacksAndMessages(null);
 		mDrawerHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				navigate(mSelectedId);
-			}
-		}, 250);
+            @Override
+            public void run() {
+                navigate(mSelectedId);
+            }
+        }, 250);
 		mDrawerLayout.closeDrawers();
 	}
 
 	private void navigate(final int itemId) {
 		Fragment navFragment = null;
+		mPrevSelectedId = itemId;
 		switch (itemId) {
 			case R.id.drawer_item_1:
-				mPrevSelectedId = itemId;
 				setTitle(R.string.app_name);
 				navFragment = new InstallerFragment();
 				break;
 			case R.id.drawer_item_2:
-				mPrevSelectedId = itemId;
 				setTitle(R.string.nav_item_modules);
 				navFragment = new ModulesFragment();
 				break;
 			case R.id.drawer_item_3:
-				mPrevSelectedId = itemId;
 				setTitle(R.string.nav_item_download);
 				navFragment = new DownloadFragment();
 				break;
 			case R.id.drawer_item_4:
-				mPrevSelectedId = itemId;
 				setTitle(R.string.nav_item_logs);
 				navFragment = new LogsFragment();
 				break;
 			case R.id.drawer_item_5:
-				startActivity(new Intent(this, SettingsActivity.class));
-				mNavigationView.getMenu().findItem(mPrevSelectedId)
-						.setChecked(true);
-				return;
+				setTitle(R.string.nav_item_settings);
+				navFragment = new SettingsFragment();
+				break;
 			case R.id.drawer_item_6:
-				startActivity(new Intent(this, SupportActivity.class));
-				mNavigationView.getMenu().findItem(mPrevSelectedId)
-						.setChecked(true);
-				return;
+				setTitle(R.string.nav_item_support);
+				navFragment = new SupportFragment();
+				break;
 			case R.id.drawer_item_7:
-				startActivity(new Intent(this, AboutActivity.class));
-				mNavigationView.getMenu().findItem(mPrevSelectedId)
-						.setChecked(true);
-				return;
+				setTitle(R.string.nav_item_about);
+				navFragment = new AboutFragment();
+				break;
 		}
 
 		if (navFragment != null) {
@@ -187,9 +194,8 @@ public class WelcomeActivity extends XposedBaseActivity
 	public void onBackPressed() {
 		if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
 			mDrawerLayout.closeDrawer(GravityCompat.START);
-		} else {
+		} else
 			super.onBackPressed();
-		}
 	}
 
 	private void notifyDataSetChanged() {
@@ -248,4 +254,15 @@ public class WelcomeActivity extends XposedBaseActivity
 		ModuleUtil.getInstance().removeListener(this);
 		mRepoLoader.removeListener(this);
 	}
+
+
+    @Override
+    public void onColorSelection(ColorChooserDialog dialog,
+                                 @ColorInt int color) {
+        if (!dialog.isAccentMode()) {
+            XposedApp.getPreferences().edit().putInt("colors", color).apply();
+        }
+    }
+
+
 }

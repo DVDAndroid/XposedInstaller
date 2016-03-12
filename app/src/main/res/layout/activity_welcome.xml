@@ -20,8 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <include layout="@layout/toolbar"/>
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="@dimen/toolbar_elevation"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:theme="@style/Theme.XposedInstaller.Toolbar">
 
+        </android.support.v7.widget.Toolbar>
     </FrameLayout>
 
     <android.support.design.widget.NavigationView

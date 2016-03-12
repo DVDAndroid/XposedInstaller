@@ -3,6 +3,16 @@
                   xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
+        android:key="add_some_space"
+        android:title="">
+    </PreferenceCategory>
+    <!-- ... -->
+    <PreferenceCategory
+        android:key="add_more_space"
+        android:title="">
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="group_installation"
         android:title="@string/settings_group_installation">
 

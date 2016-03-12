@@ -3,7 +3,11 @@
     package="de.robv.android.xposed.installer"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="23"
+        />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -87,7 +91,7 @@
         </activity-alias>
 
         <activity
-            android:name=".DownloadDetailsActivity"
+            android:name=".download.DownloadDetailsActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
@@ -109,9 +113,6 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity"/>
-        <activity android:name=".SupportActivity"/>
-        <activity android:name=".AboutActivity"/>
         <activity android:name=".ModulesBookmark"/>
 
         <receiver
@@ -126,7 +127,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".DownloadReceiver"
+            android:name=".download.DownloadReceiver"
             android:exported="true"
             android:permission="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS">
             <intent-filter>
