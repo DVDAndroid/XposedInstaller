@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import de.robv.android.xposed.installer.ModulesFragment;
+import de.robv.android.xposed.installer.fragment.ModulesFragment;
 import de.robv.android.xposed.installer.R;
 import de.robv.android.xposed.installer.XposedApp;
 import de.robv.android.xposed.installer.repo.ModuleVersion;

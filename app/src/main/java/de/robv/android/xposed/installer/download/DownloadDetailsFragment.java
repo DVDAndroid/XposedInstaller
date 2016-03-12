@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.download;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import de.robv.android.xposed.installer.R;
 import de.robv.android.xposed.installer.repo.Module;
 import de.robv.android.xposed.installer.repo.RepoParser;
 import de.robv.android.xposed.installer.util.NavUtil;

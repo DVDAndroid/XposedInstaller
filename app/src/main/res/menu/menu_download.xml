@@ -9,6 +9,11 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
     <item
+        android:id="@+id/menu_refresh"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="@string/menuReload"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/menu_sort"
         android:icon="@drawable/ic_menu_sort"
         android:title="@string/download_sorting_title"

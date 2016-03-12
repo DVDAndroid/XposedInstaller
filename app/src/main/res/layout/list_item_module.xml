@@ -86,7 +86,7 @@
             android:layout_height="match_parent"
             android:focusable="false"
             android:gravity="top"
-            android:padding="3dp"/>
+            android:padding="15dp"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -1,4 +1,4 @@
-package de.robv.android.xposed.installer;
+package de.robv.android.xposed.installer.download;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ import com.github.machinarius.preferencefragment.PreferenceFragment;
 
 import java.util.Map;
 
+import de.robv.android.xposed.installer.R;
 import de.robv.android.xposed.installer.repo.Module;
 import de.robv.android.xposed.installer.util.PrefixedSharedPreferences;
 import de.robv.android.xposed.installer.util.RepoLoader;

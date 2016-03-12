@@ -4,8 +4,8 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            tools:context=".SupportFragment"
+            android:layout_marginTop="?attr/actionBarSize"
+            tools:context=".fragment.SupportFragment"
             tools:ignore="UseCompoundDrawables,ContentDescription">
 
     <LinearLayout

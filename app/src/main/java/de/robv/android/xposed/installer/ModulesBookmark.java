@@ -34,6 +34,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import de.robv.android.xposed.installer.download.DownloadDetailsActivity;
 import de.robv.android.xposed.installer.repo.Module;
 import de.robv.android.xposed.installer.repo.ModuleVersion;
 import de.robv.android.xposed.installer.util.DownloadsUtil;
