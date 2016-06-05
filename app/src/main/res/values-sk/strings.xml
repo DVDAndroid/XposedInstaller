@@ -317,5 +317,6 @@
     <string name="status">Stav Xposed</string>
     <string name="xposed_on_next_reboot">Xposed framework bude povolený pri nasledujúcom reštarte</string>
     <string name="xposed_off_next_reboot">Xposed framework bude zakázaný pri nasledujúcom reštarte</string>
+    <string name="rovo_89_old_icon">rovo89 (stará)</string>
 
 </resources>
