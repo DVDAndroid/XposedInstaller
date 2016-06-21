@@ -231,7 +231,7 @@ public class XposedApp extends Application implements ActivityLifecycleCallbacks
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 File sdcard = Environment.getExternalStorageDirectory();
                 new File(sdcard, "Xposed-Disabler-CWM.zip").delete();
-                new File(sdcard, "src/Xposed-Disabler-Recovery.zip").delete();
+                new File(sdcard, "Xposed-Disabler-Recovery.zip").delete();
                 new File(sdcard, "Xposed-Installer-Recovery.zip").delete();
                 mPref.edit().putBoolean("cleaned_up_sdcard", true).apply();
             }

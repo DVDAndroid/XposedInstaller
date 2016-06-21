@@ -1,5 +1,8 @@
 {
   "installer":[
+    %
+  XPOSED_ZIP
+  %
     {
       "name":"xposed-v85.7-sdk23-systemless",
       "version":"85.7",
