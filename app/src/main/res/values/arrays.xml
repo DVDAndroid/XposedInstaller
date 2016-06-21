@@ -96,6 +96,7 @@
     </string-array>
 
     <string-array name="update_text">
+        <item>@string/never</item>
         <item>@string/hour1</item>
         <item>@string/hour2</item>
         <item>@string/hour3</item>
@@ -106,6 +107,7 @@
     </string-array>
 
     <string-array name="update_values">
+        <item>-1</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
