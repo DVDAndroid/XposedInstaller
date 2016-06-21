@@ -225,7 +225,7 @@
     {
       "name":"Xposed-Disabler-Recovery",
       "date":"20140101",
-      "link":"http://forum.xda-developers.com/attachment.php?attachmentid=3642692&d=1455225308",
+      "link":"https://github.com/DVDAndroid/XposedInstaller/blob/lower-sdk/app/Xposed-Disabler-Recovery.zip?raw=true",
       "architecture":"n/a"
     }
   ],
