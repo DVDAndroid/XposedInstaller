@@ -95,7 +95,6 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
     private String newApkLink;
     private String newApkChangelog;
     private Button mUpdateButton;
-    private TextView mInstallForbidden;
     private ImageView mInfoUpdate;
     private Button mClickedButton;
     private ImageView mErrorIcon;
@@ -159,7 +158,6 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
         mInfoInstaller = (ImageView) v.findViewById(R.id.infoInstaller);
         mInfoUninstaller = (ImageView) v.findViewById(R.id.infoUninstaller);
 
-        mInstallForbidden = (TextView) v.findViewById(R.id.installationForbidden);
         mInfoUpdate = (ImageView) v.findViewById(R.id.infoUpdate);
 
         mErrorIcon = (ImageView) v.findViewById(R.id.errorIcon);
@@ -936,12 +934,6 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
 
             mLoading.setVisibility(View.GONE);
 
-            if (Build.VERSION.SDK_INT < 21) {
-                hideAllFrameworkItems();
-
-                mInstallForbidden.setVisibility(View.VISIBLE);
-            }
-
             try {
 
                 if (!result) {
@@ -975,6 +967,8 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
                         mUninstallersChooser.setSelection(archPos);
                     } else {
                         hideAllFrameworkItems();
+                        mErrorTv.setVisibility(View.VISIBLE);
+                        mErrorTv.setText(getString(R.string.phone_not_compatible, Build.VERSION.SDK_INT, Build.CPU_ABI));
                     }
                 }
 
