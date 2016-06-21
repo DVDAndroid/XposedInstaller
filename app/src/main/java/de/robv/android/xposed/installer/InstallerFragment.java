@@ -188,10 +188,15 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
                 }
             }
         } else {
-            if (XposedApp.getXposedVersion() != 0) {
-                txtInstallError.setText(getString(R.string.installed_lollipop,
-                        XposedApp.getXposedVersion()));
+            int installedXposedVersionInt = XposedApp.getXposedVersion();
+            if (installedXposedVersionInt != 0) {
+                txtInstallError.setText(getString(R.string.installed_lollipop, installedXposedVersionInt));
                 txtInstallError.setTextColor(getResources().getColor(R.color.darker_green));
+
+                if (DISABLE_FILE.exists()) {
+                    txtInstallError.setText(getString(R.string.installed_lollipop_inactive, installedXposedVersionInt));
+                    txtInstallError.setTextColor(getResources().getColor(R.color.warning));
+                }
             } else {
                 txtInstallError.setText(getString(R.string.not_installed_no_lollipop));
                 txtInstallError.setTextColor(getResources().getColor(R.color.warning));
