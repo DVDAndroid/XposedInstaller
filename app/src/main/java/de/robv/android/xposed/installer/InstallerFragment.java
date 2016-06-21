@@ -71,7 +71,7 @@ import static de.robv.android.xposed.installer.util.XposedZip.Uninstaller;
 
 public class InstallerFragment extends Fragment implements DownloadsUtil.DownloadFinishedCallback {
 
-    public static final String JAR_PATH = "/system/framework/XposedBridge.jar";
+    public static final String JAR_PATH = XposedApp.BASE_DIR + "bin/XposedBridge.jar";
     private static final int INSTALL_MODE_NORMAL = 0;
     private static final int INSTALL_MODE_RECOVERY_AUTO = 1;
     private static final int INSTALL_MODE_RECOVERY_MANUAL = 2;
@@ -100,6 +100,7 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
     private ImageView mErrorIcon;
     private TextView mErrorTv;
     private CardView mUpdateView;
+    private boolean isCompatible;
 
     private static int extractIntPart(String str) {
         int result = 0, length = str.length();
@@ -197,6 +198,18 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
                 xposedDisable.setVisibility(View.GONE);
                 disableView.setVisibility(View.GONE);
             }
+        }
+
+        isCompatible = true;
+        if (Build.VERSION.SDK_INT == 15) {
+            APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk15";
+            isCompatible = checkCompatibility();
+        } else if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT <= 18) {
+            APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk16";
+            isCompatible = checkCompatibility();
+        } else if (Build.VERSION.SDK_INT == 19) {
+            APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk19";
+            isCompatible = checkCompatibility();
         }
 
         txtInstallError.setVisibility(View.VISIBLE);
@@ -634,15 +647,6 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
 
     private boolean prepareAutoFlash(List<String> messages, File file) {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            boolean isCompatible = true;
-            if (Build.VERSION.SDK_INT == 15) {
-                APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk15";
-                isCompatible = checkCompatibility();
-            } else if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT <= 19) {
-                APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk16";
-                isCompatible = checkCompatibility();
-            }
-
             if (!isCompatible) {
                 messages.add(String.format(getString(R.string.phone_not_compatible), Build.VERSION.SDK_INT, Build.CPU_ABI));
                 return false;
@@ -792,6 +796,7 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
 
     @Override
     public void onDownloadFinished(final Context context, final DownloadsUtil.DownloadInfo info) {
+        messages.clear();
         Toast.makeText(context, getString(R.string.downloadZipOk, info.localFilename), Toast.LENGTH_LONG).show();
 
         if (getInstallMode() == INSTALL_MODE_RECOVERY_MANUAL)
