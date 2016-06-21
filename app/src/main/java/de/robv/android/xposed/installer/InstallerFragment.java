@@ -76,6 +76,7 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
     private static final int INSTALL_MODE_RECOVERY_AUTO = 1;
     private static final int INSTALL_MODE_RECOVERY_MANUAL = 2;
     private static final File DISABLE_FILE = new File(XposedApp.BASE_DIR + "conf/disabled");
+    private static final String BINARIES_FOLDER = AssetUtil.getBinariesFolder();
     private static List<String> messages = new LinkedList<>();
     private static ArrayList<Installer> installers;
     private static ArrayList<Uninstaller> uninstallers;
@@ -634,6 +635,38 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
     }
 
     private boolean prepareAutoFlash(List<String> messages, File file) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            boolean isCompatible = true;
+            if (Build.VERSION.SDK_INT == 15) {
+                APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk15";
+                isCompatible = checkCompatibility();
+            } else if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT <= 19) {
+                APP_PROCESS_NAME = BINARIES_FOLDER + "app_process_xposed_sdk16";
+                isCompatible = checkCompatibility();
+            }
+
+            if (!isCompatible) {
+                messages.add(String.format(getString(R.string.phone_not_compatible), Build.VERSION.SDK_INT, Build.CPU_ABI));
+                return false;
+            }
+
+            File appProcessFile = AssetUtil.writeAssetToFile(APP_PROCESS_NAME, new File(XposedApp.BASE_DIR + "bin/app_process"), 00700);
+            if (appProcessFile == null) {
+                showAlert(getString(R.string.file_extract_failed, "app_process"));
+                return false;
+            }
+
+            messages.add(getString(R.string.file_copying, "XposedBridge.jar"));
+            File jarFile = AssetUtil.writeAssetToFile("XposedBridge.jar", new File(JAR_PATH), 00644);
+            if (jarFile == null) {
+                messages.add("");
+                messages.add(getString(R.string.file_extract_failed, "XposedBridge.jar"));
+                return false;
+            }
+
+            mRootUtil.executeWithBusybox("sync", messages);
+        }
+
         if (mRootUtil.execute("ls /cache/recovery", null) != 0) {
             messages.add(getString(R.string.file_creating_directory,
                     "/cache/recovery"));
