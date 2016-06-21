@@ -897,25 +897,23 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
                     installers.add(new XposedZip.Installer(link, name, architecture, sdk, version));
                 }
 
-                if (Build.VERSION.SDK_INT >= 21) {
-                    for (int i = 0; i < uninstallerArray.length(); i++) {
-                        JSONObject jsonObject = uninstallerArray.getJSONObject(i);
+                for (int i = 0; i < uninstallerArray.length(); i++) {
+                    JSONObject jsonObject = uninstallerArray.getJSONObject(i);
 
-                        String link = jsonObject.getString("link");
-                        String name = jsonObject.getString("name");
-                        String architecture = jsonObject.getString("architecture");
+                    String link = jsonObject.getString("link");
+                    String name = jsonObject.getString("name");
+                    String architecture = jsonObject.getString("architecture");
 
-                        @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                        Date date = null;
-                        try {
-                            date = sdf.parse(jsonObject.getString("date"));
-                        } catch (ParseException ignored) {
-                        }
-                        java.text.DateFormat dateFormat = DateFormat.getDateFormat(getContext());
-
-                        uninstallers.add(new Uninstaller(link, name, architecture, dateFormat.format(date)));
+                    @SuppressLint("SimpleDateFormat")
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    Date date = null;
+                    try {
+                        date = sdf.parse(jsonObject.getString("date"));
+                    } catch (ParseException ignored) {
                     }
+                    java.text.DateFormat dateFormat = DateFormat.getDateFormat(getContext());
+
+                    uninstallers.add(new Uninstaller(link, name, architecture, dateFormat.format(date)));
                 }
 
                 newApkVersion = json.getJSONObject("apk").getString("version");
