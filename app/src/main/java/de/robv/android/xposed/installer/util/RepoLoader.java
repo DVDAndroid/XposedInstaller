@@ -182,7 +182,10 @@ public class RepoLoader {
             resetLastUpdateCheck();
         } else {
             long lastUpdateCheck = mPref.getLong("last_update_check", 0);
-            if (System.currentTimeMillis() < lastUpdateCheck + UPDATE_FREQUENCY)
+            int refreshInterval = XposedApp.getPreferences().getInt("repo_refresh_interval", 24);
+            if (refreshInterval == -1) return;
+            int updateFrequency = refreshInterval * 60 * 60 * 1000;
+            if (System.currentTimeMillis() < lastUpdateCheck + refreshInterval)
                 return;
         }
 
