@@ -70,10 +70,10 @@ import static de.robv.android.xposed.installer.util.XposedZip.Uninstaller;
 public class InstallerFragment extends Fragment implements DownloadsUtil.DownloadFinishedCallback {
 
     public static final String JAR_PATH = XposedApp.BASE_DIR + "bin/XposedBridge.jar";
+    public static final File DISABLE_FILE = new File(XposedApp.BASE_DIR + "conf/disabled");
     private static final int INSTALL_MODE_NORMAL = 0;
     private static final int INSTALL_MODE_RECOVERY_AUTO = 1;
     private static final int INSTALL_MODE_RECOVERY_MANUAL = 2;
-    private static final File DISABLE_FILE = new File(XposedApp.BASE_DIR + "conf/disabled");
     private static final String BINARIES_FOLDER = AssetUtil.getBinariesFolder();
     private static List<String> messages = new LinkedList<>();
     private static ArrayList<Installer> installers;
