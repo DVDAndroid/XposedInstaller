@@ -393,7 +393,7 @@ public class InstallerFragment extends Fragment implements DownloadsUtil.Downloa
             case R.id.help:
                 String arch = getArch();
                 String info = getString(R.string.helpChoose) + "\n\n\n" + getString(R.string.detected_as, Build.VERSION.SDK_INT, arch + "\n");
-                String info += getUIFramework();
+                info += getUIFramework();
                 new MaterialDialog.Builder(getContext()).title(R.string.help)
                         .content(info)
                         .positiveText(android.R.string.ok).show();
