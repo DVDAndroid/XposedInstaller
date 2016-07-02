@@ -93,6 +93,7 @@ public class DownloadDetailsActivity extends XposedBaseActivity
                 getWindow().setAttributes(params);
 
                 toolbar.setNavigationIcon(R.drawable.ic_close);
+                setFinishOnTouchOutside(true);
             }
 
             setupTabs();
