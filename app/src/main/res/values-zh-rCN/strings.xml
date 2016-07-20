@@ -304,7 +304,7 @@
     <string name="module_saved">模块已保存至 %1$s</string>
     <string name="ignore_updates">忽略更新</string>
     <string name="ignore_updates_summ">忽略特定模块的更新</string>
-    <string name="reboot_recovery">重启至恢复模式<</string>
+    <string name="reboot_recovery">重启至恢复模式</string>
     <string name="loading">正在加载...</string>
     <string name="chrome_custom_tabs">Chrome 自定义标签页</string>
     <string name="chrome_custom_tabs_summ">在内置浏览器中打开链接</string>
