@@ -317,8 +317,8 @@
     <string name="status">Xposed 状态</string>
     <string name="xposed_on_next_reboot">Xposed 框架将在下次重新启动后启用</string>
     <string name="xposed_off_next_reboot">Xposed 框架将在下次重新启动后禁用</string>
-	<string name="rovo_89_old_icon">rovo89（旧风格）</string>
-	<string name="update_interval">后台更新检查间隔</string>
+    <string name="rovo_89_old_icon">rovo89（旧风格）</string>
+    <string name="update_interval">后台更新检查间隔</string>
     <string name="hour1">1 小时</string>
     <string name="hour2">2 小时</string>
     <string name="hour3">3 小时</string>
