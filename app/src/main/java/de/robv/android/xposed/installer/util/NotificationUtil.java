@@ -22,6 +22,8 @@ public final class NotificationUtil {
     public static final int NOTIFICATION_MODULE_NOT_ACTIVATED_YET = 0;
     public static final int NOTIFICATION_MODULES_UPDATED = 1;
     public static final int NOTIFICATION_INSTALLER_UPDATE = 2;
+    public static final int NOTIFICATION_MODULE_INSTALLATION = 3;
+    public static final int NOTIFICATION_MODULE_INSTALLING = 4;
     private static final int PENDING_INTENT_OPEN_MODULES = 0;
     private static final int PENDING_INTENT_OPEN_INSTALL = 1;
     private static final int PENDING_INTENT_SOFT_REBOOT = 2;
@@ -140,6 +142,45 @@ public final class NotificationUtil {
                 pSoftReboot);
 
         sNotificationManager.notify(null, NOTIFICATION_MODULES_UPDATED, builder.build());
+    }
+
+    public static void showModuleInstallNotification(String title, String message) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                sContext).setContentTitle(title).setContentText(message)
+                .setVibrate(new long[]{0}).setAutoCancel(true)
+                .setSmallIcon(R.drawable.ic_notification);
+
+        if (prefs.getBoolean("heads_up", true) && Build.VERSION.SDK_INT >= 21)
+            builder.setPriority(2);
+
+        if (prefs.getBoolean("colored_notification", false))
+            builder.setColor(XposedApp.getColor(sContext));
+
+        NotificationCompat.BigTextStyle notiStyle = new NotificationCompat.BigTextStyle();
+        notiStyle.setBigContentTitle(title);
+        notiStyle.bigText(message);
+        builder.setStyle(notiStyle);
+
+        sNotificationManager.notify(null, NOTIFICATION_MODULE_INSTALLATION, builder.build());
+    }
+
+    public static void showModuleInstallingNotification(String appName) {
+        String title = "Installing...";
+        String message = "Installing " + appName;
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                sContext).setContentTitle(title).setContentText(message)
+                .setVibrate(new long[]{0})
+                .setSmallIcon(R.drawable.ic_notification).setOngoing(true);
+
+        if (prefs.getBoolean("colored_notification", false))
+            builder.setColor(XposedApp.getColor(sContext));
+
+        NotificationCompat.BigTextStyle notiStyle = new NotificationCompat.BigTextStyle();
+        notiStyle.setBigContentTitle(title);
+        notiStyle.bigText(message);
+        builder.setStyle(notiStyle);
+
+        sNotificationManager.notify(null, NOTIFICATION_MODULE_INSTALLING, builder.build());
     }
 
     public static void showInstallerUpdateNotification() {
