@@ -314,5 +314,12 @@
     <string name="flash_error_invalid_zip">Not a flashable ZIP file</string>
     <string name="flash_error_not_flashable_in_app">This file can only be flashed via recovery</string>
     <string name="flash_error_default">Error %d occurred</string>
+    <string name="installation_error">Installation error</string>
+    <string name="installation_successful">Installation successful</string>
+    <string name="installation_successful_message">%s installed successfully</string>
+    <string name="installation_error_message">%1$s installation failed (%2$s)</string>
+    <string name="installation_apk_normal">Install APK normally</string>
+    <string name="install_load">Installing…</string>
+    <string name="install_load_apk">Installing %s</string>
 
 </resources>
