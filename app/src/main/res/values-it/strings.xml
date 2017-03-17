@@ -300,5 +300,12 @@
     <string name="flash_error_timeout">Timeout finito</string>
     <string name="not_flashable_inapp">Questo file zip non può essere flashato nell\' app. Installazione automaticamente in recovery</string>
     <string name="not_now">Non ora</string>
+    <string name="install_load">Installazione…</string>
+    <string name="install_load_apk">Installazione di %s</string>
+    <string name="installation_apk_normal">Installa l\'APK normalmente</string>
+    <string name="installation_error">Errore installazione</string>
+    <string name="installation_error_message">Installazione di %1$s fallita (%2$s)</string>
+    <string name="installation_successful">Installazione riuscita</string>
+    <string name="installation_successful_message">%s installato con successo</string>
 
 </resources>
