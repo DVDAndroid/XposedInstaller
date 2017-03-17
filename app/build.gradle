@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 
 ext {
     VERSION_DATE = '26/11/16'
-    SUPPORT_LIBRARY_VERSION = '25.1.0'
-    BUILD_TOOLS = "25.0.1"
+    SUPPORT_LIBRARY_VERSION = '25.3.0'
+    BUILD_TOOLS = "25.0.2"
 }
 
 android {
@@ -32,10 +32,11 @@ android {
 }
 
 dependencies {
+    //noinspection GradleCompatible
     compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:customtabs:$SUPPORT_LIBRARY_VERSION"
-    compile 'com.afollestad.material-dialogs:commons:0.9.0.2'
+    compile 'com.afollestad.material-dialogs:commons:0.9.4.1'
     compile 'com.github.machinarius:preferencefragment:0.1.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
