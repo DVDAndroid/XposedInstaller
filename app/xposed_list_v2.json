@@ -352,8 +352,8 @@
         "25": "All AOSP-based ROMs; Nexus, OnePlus, Pixel C devices"
       },
       "incompatibility": {
-        "24": "All other ROMs",
-        "25": "All other ROMs"
+        "24": "MIUI, AEX, Touchwiz, all other ROMs",
+        "25": "MIUI, AEX, Touchwiz, all other ROMs""
       },
       "support": {
         "24": "https://forum.xda-developers.com/xposed/xposed-android-nougat-sdk-25-arm64-t3639221",
