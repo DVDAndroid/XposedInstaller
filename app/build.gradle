@@ -20,8 +20,8 @@ android {
         minSdkVersion 16
         //noinspection OldTargetApi
         targetSdkVersion 25
-        versionCode 41
-        versionName "3.1.4 by dvdandroid - " + VERSION_DATE
+        versionCode 43
+        versionName "3.1.5 by dvdandroid - " + VERSION_DATE
         project.ext.set("archivesBaseName", "XposedInstaller_by_dvdandroid_" + VERSION_DATE.replaceAll("/", "_"))
 
         buildConfigField "String", "APP_VERSION", APP_VERSION
