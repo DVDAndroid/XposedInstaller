@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources>
 
     <!-- General/various strings -->
     <string name="menuSend">发送</string>
@@ -156,9 +156,9 @@
 
     <!-- About tab -->
     <string name="about_developers_label">主要开发者</string>
-    <string name="about_developers"><a href="http://forum.xda-developers.com/member.php?u=4419114">rovo89</a> 和 <a href="http://forum.xda-developers.com/member.php?u=4322181">Tungstwenty</a>\n<a href="http://forum.xda-developers.com/member.php?u=4756862">-BioHaZard-</a> 和 <a href="http://forum.xda-developers.com/member.php?u=5345056">dvdandroid</a> 修复问题并适配质感设计</string>
+    <string name="about_developers"><a href="http://forum.xda-developers.com/member.php?u=4419114">rovo89</a> 和 <a href="http://forum.xda-developers.com/member.php?u=4322181">Tungstwenty</a>\n<a href="http://forum.xda-developers.com/member.php?u=4756862">-BioHaZard-</a> 和 <a href="http://forum.xda-developers.com/member.php?u=5345056">dvdandroid</a> 修复问题并适配 Material Design</string>
     <string name="about_translator_label">翻译</string>
-    <string name="translator">haseoxth</string>
+    <string name="translator">MlgmXyysd</string>
     <string name="about_version_label">版本</string>
     <string name="about_source_label">源代码</string>
     <string name="about_libraries_label">使用的库</string>
@@ -178,7 +178,7 @@
     <string name="download_could_not_read_file">无法读取下载的文件：%s</string>
     <string name="download_no_valid_apk">下载的文件并非有效的 APK （或存在兼容性问题）</string>
     <string name="download_incorrect_package_name">文件包名不正确（下载：%1$s，预期：%2$s）</string>
-    <string name="download_running">正在下载中...</string>
+    <string name="download_running">正在下载中…</string>
 
     <!-- RepoLoader -->
     <string name="repo_download_failed_http">下载 %1$s 失败：%2$d（%3$s）</string>
@@ -188,8 +188,8 @@
 
     <string name="warning_installed_on_external_storage">此模块因被安装在 SD 卡中而导致无法加载，请将其移动到内部存储。</string>
     <string name="view">查看</string>
-    <string name="export_">导出...</string>
-    <string name="import_">导入...</string>
+    <string name="export_">导出…</string>
+    <string name="import_">导入…</string>
     <string name="export_enabled_modules">导出已启用模块列表</string>
     <string name="import_enabled_modules">导入已启用模块列表</string>
     <string name="export_installed_modules">导出已安装模块列表</string>
@@ -218,7 +218,7 @@
     </string>
     <string name="downloadZipOk">%1$s 已正确下载</string>
     <string name="permissionNotGranted">当未允许写入外部存储空间权限时，该功能无法正常工作。</string>
-    <string name="warningArchitecture">您是否已选择了正确的 XPOSED ZIP 文件？\n错误的 ZIP 文件将可能损坏您的手机！</string>
+    <string name="warningArchitecture">您是否已选择了正确的 Xposed ZIP 文件？\n错误的 ZIP 文件将可能损坏您的手机！</string>
     <string name="newVersion">有新版本的 Xposed Installer 可用！现在更新！</string>
     <string name="update">更新</string>
     <string name="choose_icon">选择一个图标</string>
@@ -253,14 +253,14 @@
     <string name="ignore_updates">忽略更新</string>
     <string name="ignore_updates_summ">忽略指定模块的更新</string>
     <string name="reboot_recovery">重启至恢复模式</string>
-    <string name="loading">正在加载...</string>
+    <string name="loading">正在加载…</string>
     <string name="chrome_custom_tabs">Chrome 自定义标签页</string>
     <string name="chrome_custom_tabs_summ">在内置浏览器中打开链接</string>
     <string name="scroll_bottom">滚动到底部</string>
     <string name="open_drawer_summ">在启动应用时自动打开导航抽屉栏</string>
     <string name="open_drawer">自动打开导航抽屉栏</string>
     <string name="share_app">分享应用</string>
-    <string name="share_app_text">来瞧瞧这个：适配了质感设计的 Xposed Installer！%s</string>
+    <string name="share_app_text">来瞧瞧这个：适配了 Material Design 的 Xposed Installer！%s</string>
     <string name="status">Xposed 状态</string>
     <string name="xposed_on_next_reboot">Xposed 框架将在下次重新启动后启用</string>
     <string name="xposed_off_next_reboot">Xposed 框架将在下次重新启动后禁用</string>
@@ -284,7 +284,7 @@
     <string name="not_logcat">如果有人要求您提供一份 Android 系统日志，那么您来错了地方。在此处显示的是 Xposed 的日志信息；如果您想抓取系统日志，可前往 XDA 寻求所需的答案。</string>
     <string name="force_english">强制显示为英语</string>
     <string name="warning_language">语言设置将在应用重启后生效。</string>
-    <string name="not_flashable_inapp">应用不能刷入此ZIP文件。将在恢复模式中自动安装</string>
+    <string name="not_flashable_inapp">应用不能刷入此 ZIP 文件。将在恢复模式中自动安装</string>
     <string name="not_now">稍后</string>
     <string name="countdown">%1$s (%2$d)</string>
     <string name="flash_error_timeout">超时</string>
@@ -292,5 +292,31 @@
     <string name="flash_error_invalid_zip">不是一个可刷入的ZIP文件</string>
     <string name="flash_error_not_flashable_in_app">此文件仅能通过恢复模式刷入</string>
     <string name="flash_error_default">%d 个错误</string>
+    <string name="dvdandroid_summary">此 Xposed Installer 的创建者</string>
+    <string name="install_load_apk">正在安装 %s</string>
+    <string name="install_load">正在安装…</string>
+    <string name="installer_needs_update">%1$s 需要更新</string>
+    <string name="known_issue_missing_base_directory">缺少基础目录</string>
+    <string name="known_issue_wrong_base_directory">错误的基础目录: %1$s</string>
+    <string name="rovo89_summary">Xposed 的主要创建者</string>
+    <string name="tungstwenty_summary">在代码和思想上做出了许多贡献</string>
+    <string name="verified_boot_active">引导验证已启用</string>
+    <string name="verified_boot_deactivated">引导验证已禁用</string>
+    <string name="verified_boot_explanation">引导验证（dm-verity）会在修改 system 分区之后阻止设备正常启动。\n<b>不建议安装 Xposed！</b></string>
+    <string name="unstable_build">这是一个不稳定的构建。自行承担安装风险。</string>
+    <string name="alt_download_method">备选下载方式</string>
+    <string name="alt_download_method_summ">如果在下载模块时遇到问题，请选择此选项</string>
+    <string name="biohazard_summary">帮助实现 Material Design</string>
+    <string name="dexopt_now">优化应用</string>
+    <string name="done">完成</string>
+    <string name="download_progress">%1$,d / %2$,d kB</string>
+    <string name="ignore_chinese">忽略中文字符</string>
+    <string name="ignore_chinese_summary">在下载列表中隐藏中文模块。模块仍然可以被搜索。启用此选项可能会降低性能。</string>
+    <string name="installation_apk_normal">正常安装 APK</string>
+    <string name="installation_error">安装失败</string>
+    <string name="installation_error_message">%1$s 安装失败 (%2$s)</string>
+    <string name="installation_successful">安装成功</string>
+    <string name="installation_successful_message">%s 已成功安装</string>
+    <string name="this_may_take_a_while">这可能需要一段时间。</string>
 
 </resources>
